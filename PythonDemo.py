@@ -50,9 +50,9 @@ def firstPlayer():
             pos1=int(input("Player 1 Enter Position of your choice\n"))
             if(pos1>9 or pos1<=0):
                 print("Invalid Input")
-            elif(pos1<=9):
+            elif(pos1<=9 and vals[pos1-1]!='X' and vals[pos1-1]!='O'):
                 for i in vals:
-                    if(i==pos1 and pos1!='X' and pos1!='O'):
+                    if(i==pos1):
                         vals[i-1]='X'
                         counter=0
                         for j in vals:
@@ -62,7 +62,18 @@ def firstPlayer():
                                 counter=0
                             else:
                                 counter=counter+1
-                break;           
+                break;
+            else:
+                print("This Position is lock")
+                for j in vals:
+                            print(j,end=" ")
+                            if(counter==2):
+                                print("\n")
+                                counter=0
+                            else:
+                                counter=counter+1
+                continue;
+            
         except ValueError:
             print("Invalid Input")
             for j in vals:
